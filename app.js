@@ -126,9 +126,13 @@ born in the 1500's.
   the years 1500 and 1599.
 */
 
-let veryOldInventors = [];
-
+let veryOldInventors = []
 // Complete the exercise in the space below:
+
+
+veryOldInventors = inventors.filter(
+  inventor => inventor.year >= 1500 && inventor.year < 1600
+);
 
 // Check your work:
 console.log('Exercise 1 my result: ', veryOldInventors);
@@ -160,6 +164,12 @@ Hint: Return a new object literal from the callback that looks like:
 let inventorNames = [];
 
 // Complete the exercise in the space below:
+
+inventorNames = inventors.map(inventor => ({
+  first: inventor.first,
+  last: inventor.last,
+}));
+
 
 // Check your work:
 console.log('Exercise 2 my result: ', inventorNames);
@@ -195,6 +205,9 @@ the past to those born most recently).
 let sortedByBirthYear = [];
 
 // Complete the exercise in the space below:
+
+sortedByBirthYear = inventors.sort((a, b) => a.year - b.year);
+
 
 // Check your work:
 console.log('Exercise 3 my result: ', sortedByBirthYear);
@@ -236,6 +249,11 @@ let inventorNamedAda = {};
 
 // Complete the exercise in the space below:
 
+
+
+inventorNamedAda = inventors.find(inventor => inventor.first === 'Ada');
+
+
 // Check your work:
 console.log('Exercise 4 my result: ', inventorNamedAda);
 console.log('Exercise 4 correct result: ', {
@@ -266,6 +284,14 @@ Hint: Use the String.prototype.split() method to separate the first and last
 let firstLast = [];
 
 // Complete the exercise in the space below:
+
+
+
+firstLast = people.map(person => {
+  const [last, first] = person.split(', ');
+  return `${first} ${last}`;
+});
+
 
 // Check your work:
 console.log('Exercise 5 my result: ', firstLast);
@@ -335,6 +361,11 @@ let isAdultPresent = null;
 
 // Complete the exercise in the space below:
 
+
+isAdultPresent = devs.some(dev => new Date().getFullYear() - dev.year >= 18);
+
+
+
 // Check your work:
 console.log('Exercise 6 my result: ', isAdultPresent);
 console.log('Exercise 6 correct result: ', true);
@@ -363,6 +394,11 @@ let isEveryone19OrOlder = null;
 
 // Complete the exercise in the space below:
 
+
+
+isEveryone19OrOlder = devs.every(dev => new Date().getFullYear() - dev.year >= 19);
+
+
 // Check your work:
 console.log('Exercise 7 my result: ', isEveryone19OrOlder);
 console.log('Exercise 7 correct result: ', false);
@@ -386,6 +422,10 @@ a specific ID 823423 from an array of comment objects.
 let commentById = {};
 
 // Complete the exercise in the space below:
+
+
+commentById = comments.find(comment => comment.id === 823423);
+
 
 // Check your work:
 console.log('Exercise 8 my result: ', commentById);
@@ -411,6 +451,11 @@ of comment objects.
 let idx = null;
 
 // Complete the exercise in the space below:
+
+
+
+idx = comments.findIndex(comment => comment.id === 123523);
+
 
 // Check your work:
 console.log('Exercise 9 my result: ', idx);
@@ -450,6 +495,14 @@ let totalYearsLived = 0;
 
 // Complete the exercise in the space below:
 
+
+
+totalYearsLived = inventors.reduce(
+  (total, inventor) => total + (inventor.passed - inventor.year),
+  0
+);
+
+
 // Check your work:
 console.log('Level Up 1 my result: ', totalYearsLived);
 console.log('Level Up 1 correct result: ', 861);
@@ -488,6 +541,16 @@ Hints:
 let travelMethodCounts = {};
 
 // Complete the exercise in the space below:
+
+
+
+
+travelMethodCounts = travelMethods.reduce((counts, method) => {
+  counts[method] = (counts[method] || 0) + 1;
+  return counts;
+}, {});
+
+
 
 // Check your work:
 console.log('Level Up 2 my result: ', travelMethodCounts);
